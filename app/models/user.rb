@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
     
     auth.info.email = "demo1@coupa.com"
-    if User.email_validation(auth.info.email) == true 
+    if User.email_validation(auth.info.email) == true && valid(auth.info.email) == true 
+
     	u=User.find_by(email: auth.info.email)
     	u.update(name:auth.info.name,  uid: auth.uid, provider: auth.provider,oauth_token: auth.credentials.token, oauth_expires_at: Time.at(auth.credentials.expires_at))
     	u
