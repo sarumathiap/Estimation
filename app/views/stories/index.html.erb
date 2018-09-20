@@ -1,0 +1,25 @@
+<h1>Stories#index</h1>
+<p>Find me in app/views/stories/index.html.erb</p>
+
+ <h2>Issues</h2>
+ <table id ='epics' class ='display' data-source= "<%= epics_url(format:"json") %>">
+ <thead>
+ <tr>
+ <th>Issue name</th>
+
+ <th>Estimated</th>
+ <th>Logged</th>
+ 
+ </tr>
+ </thead>
+ <tbody>
+ <% @stories.each do |issue| %>
+ <tr>
+ <td><%= issue.name %></td>
+
+ <td><%= issue.estimated %></td>
+ <td><%= issue.logged %></td>
+ </tr>
+ <% end %>
+ </tbody>
+ </table>

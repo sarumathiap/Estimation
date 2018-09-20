@@ -1,0 +1,13 @@
+<% @l %>
+
+
+var arr =[]
+<% @l.each do |k| %>
+ arr.push("<%= k %>")
+<% end %>
+
+console.log(arr);
+
+return arr;
+
+

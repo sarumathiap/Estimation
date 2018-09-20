@@ -1,0 +1,29 @@
+var op = "<%= ModulsHelper.ad %>"
+
+if(op == "updation in progress" )
+{
+	document.getElementById("timeup").innerHTML = op
+
+	var my_elem = document.getElementById('timeup');
+
+	if (document.getElementById("up-load")==null)
+	{
+	var img1 = document.createElement('img');	
+	
+	img1.setAttribute('id', "up-load");
+
+	img1.src = "<%= asset_path('uploading.gif') %>";
+	img1.style.width = '30px';
+
+	my_elem.parentNode.insertBefore(img1, my_elem);
+
+}
+}
+else
+{
+	var op = "<%= ModulsHelper.ad %>"
+	var image_x1 = document.getElementById('up-load');
+      image_x1.parentNode.removeChild(image_x1);
+	document.getElementById("timeup").innerHTML = op	
+}
+

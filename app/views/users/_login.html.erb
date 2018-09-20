@@ -1,0 +1,120 @@
+
+<style type="text/css">
+  @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+html {
+   height: 100%;
+}
+
+body {
+/* Remember to use the other versions for IE 10 and older browsers! */
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100%;
+font-family: 'lato', sans-serif;
+color: #fff;
+background: #222222;
+background: #16222A; /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #003366 , #295370); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #003366 , #295370); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+  position: fixed;
+  background:#4c7999;
+  border-radius: 5px;
+  box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+  width:450px;
+  height: 430px;
+  display: flex;  
+  flex-direction: column;
+}
+
+
+
+.login-item {
+  position: fixed;
+  color: #ffff;
+  padding:23px 23px 0;
+
+  width: 430px;
+
+  margin-top: 80px;
+
+  margin-left: 25px;
+    
+  border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+.text--center {
+  text-align: center;
+}
+
+.login-item a img{
+    
+    margin-left: 40px;
+    margin-top: 0px;
+    width: 250px;
+    
+}
+
+.login-item a img:hover{
+    
+   
+   
+    
+    
+}
+
+a:hover {
+
+    background-color:transparent;
+}
+
+
+.login-item h2 {
+
+  font-size: 16px;
+  margin-top: 50px;
+  margin-left: 50px;
+
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+<div class="container">
+  <p></p>
+    <!-- <div class="logo">Login</div> -->
+    <div class="login-item">
+      
+        
+
+       <%= link_to image_tag("google2.png", border: 0), "/auth/google_oauth2", id: "sign_in" %>
+
+       <h2>Dont have Account? <b>Get Access</b></h2>
+       <%= render 'form', user: @user %>
+      
+    </div>
+</div>
+
+

@@ -1,0 +1,313 @@
+/* this declares a better box model */
+/* line 8, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 12, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.list-wrap label {
+  float: left;
+  color: #00BDE8;
+}
+
+/* line 16, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.search-box {
+  position: absolute;
+  left: 480px;
+  width: 23%;
+  padding: 0.4em;
+  font-size: 1em;
+  color: #555;
+}
+
+/* line 26, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.list-count {
+  float: right;
+  text-align: center;
+  width: 30%;
+  padding: 0.5em;
+  color: #ddd;
+}
+
+/* line 36, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+li {
+  transition-property: margin, background-color, border-color;
+  transition-duration: .4s, .2s, .2s;
+  transition-timing-function: ease-in-out, ease, ease;
+}
+
+/* line 42, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.empty-item {
+  transition-property: opacity;
+  transition-duration: 0s;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+}
+
+/* line 49, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.empty .empty-item {
+  transition-property: opacity;
+  transition-duration: .2s;
+  transition-delay: .3s;
+  transition-timing-function: ease;
+}
+
+/* line 56, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.hiding {
+  margin-left: -100%;
+  opacity: 0.5;
+}
+
+/* line 61, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.hidden {
+  display: none;
+}
+
+/* line 65, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+ul {
+  float: left;
+  width: 100%;
+  margin: 2em 0;
+  padding: 0;
+  position: relative;
+}
+
+/* line 73, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+ul:before {
+  content: 'Modules';
+  position: absolute;
+  left: -2.8em;
+  font-size: 3em;
+  text-align: right;
+  top: 2em;
+  color: #ededed;
+  font-weight: bold;
+  font-family: 'Maven Pro', sans-serif;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+/* line 86, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+li {
+  float: left;
+  clear: left;
+  width: 100%;
+  margin: 0.2em 0;
+  padding: 0.5em 0.8em;
+  list-style: none;
+  background-color: #f2f2f2;
+  border-left: 5px solid #003842;
+  cursor: pointer;
+  color: #333;
+  position: relative;
+  z-index: 2;
+}
+
+/* line 101, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+li:hover {
+  background-color: #f9f9f9;
+  border-color: #00BDE8;
+}
+
+/* line 106, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.empty-item {
+  background: #fff;
+  color: #ddd;
+  margin: 0.2em 0;
+  padding: 0.5em 0.8em;
+  font-style: italic;
+  border: none;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  float: left;
+  clear: left;
+  width: 100%;
+}
+
+/* line 121, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.empty .empty-item {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*
+The following are styles purely for the surroundings
+*/
+/* line 138, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+body {
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* line 146, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+a {
+  color: #00BDE8;
+}
+
+/* line 148, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+h1 {
+  font-size: 2.6em;
+  margin: 0;
+  padding-top: 1.5em;
+  text-align: center;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+/* line 155, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+h3 {
+  margin: 0 0 2em;
+  text-align: center;
+  font-weight: normal;
+  font-family: georgia, times;
+  font-style: italic;
+  color: #777;
+  font-size: 1em;
+}
+
+/* line 165, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.info {
+  float: left;
+  width: 60%;
+  margin: 2em 20%;
+  padding: 2em 0;
+  background: #f9f9f9;
+  border-left: 5px solid #003842;
+  padding: 10px 20px;
+}
+
+/* line 175, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+.list-wrap {
+  float: left;
+  width: 40%;
+  margin: 2em 30%;
+  padding: 2em 0;
+}
+
+/* line 182, /home/hari/Desktop/proj/app/assets/stylesheets/moduls.scss */
+p {
+  text-align: left;
+  font-size: 1em;
+}
+/* line 1, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 10, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 16, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 22, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 25, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 29, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 39, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 44, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 49, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 53, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 59, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 66, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 76, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 82, /home/hari/Desktop/proj/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+@import 'bootstrap';
+
+body{
+	background-color: #333333;
+}
+
+h1{
+	color: white;
+}

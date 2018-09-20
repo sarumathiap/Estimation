@@ -1,0 +1,24 @@
+
+<h2>Epics</h2>
+
+ <table id ='epics' class = 'display saru' data-source= "<%= epics_url(format:"json") %>" >
+ <thead>
+ <tr>
+ <th>Epic</th>
+ 
+   <th>Estimated</th>
+    <th>Logged</th>
+ </tr>
+ </thead>
+ <tbody>
+ <% @epics.each do |epic| %>
+ <tr>
+ 
+<td><%= link_to epic.name, epic,:"data-turbolinks" => false %></td>
+
+<td><%= epic.estimated %></td>
+<td><%= epic.actual %></td>
+ </tr>
+ <% end %>
+ </tbody>
+ </table>

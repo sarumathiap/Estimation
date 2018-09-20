@@ -1,0 +1,445 @@
+
+<div class="divdiv">
+<p></p>
+<div class="row">
+<div class="col-md-4 user"> 
+<div class="hsize"><center><b>Request</b><br/><br/></center></div>
+<% if @use.empty? %>
+<div class ="inputsize"><center>No pending approvals</center></div>
+<%else%>
+<div class="tbl-content">
+        <table cellpadding="0" >
+
+ <% @use.each do |user| %>
+ <%= form_tag edit_role_info_path(user) do%>
+
+        <tr>
+
+         <td><div class ="inputsize"><%= user.email %></div></td>
+
+
+          
+          <td><%= label_tag %> <%= check_box(:role, "validated")%></td>
+
+          <td> <%= image_submit_tag ("tick.png")%> </td>
+
+       
+
+        <td><%= link_to image_tag("close.png"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ </tr>
+   <% end %>
+   
+   <% end %>
+  
+<!-- <div class="danger">
+  <p><strong>Note:</strong> Select the check box to add as super user</p>
+</div> -->
+<% end %>
+
+</table>
+</div>
+
+</div>
+
+<style type="text/css">
+  
+  table td input[type="image"]{
+
+width: 20px;
+ background-color: white;
+ 
+  }
+
+  
+
+/* demo styles */
+
+table{
+  width:400px;
+  height: 200px;
+  table-layout: fixed;
+
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.1)
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;margin-top:0;
+  border:1px solid rgba(255,255,255,0.3)
+  
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #000;
+  text-transform: uppercase;
+}
+td{
+padding:12px;
+text-align:left;
+vertical-align:middle;
+font-size:15px;
+color:#000;
+border-bottom:solid 1px rgba(255,255,255,0.1);
+}
+
+section{
+  margin: 30px;
+}
+::-webkit-scrollbar {
+    width: 8px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgb(0, 0, 0); 
+}
+
+
+</style>
+
+
+
+
+<div class="col-md-4 user add"> 
+
+<div class="h1size"><b>Add Users</b><br/><br/></div>
+ <%= form_with(model: @info, local: true, :class => "form2") do |f| %>
+     <%= f.text_field :email , id: :userdata , :placeholder => "Enter Coupa User email"%><br>
+     <%= f.select :role, ['User', 'superuser']%><br>
+    <%= f.submit "Add Users", :class => "button" , id: :usersadd %><br><br>
+
+<% end %>
+</div>
+
+
+
+
+<div class="col-md-4 user jira">
+ <div class="h2size"><b>Jira Credentials</b><br/><br/></div>
+
+<%= form_for  @inf do |f| %>
+<div class="inputsize">
+
+   Username&nbsp;<%= f.text_field :username %><br/><br/>
+
+   Password&nbsp;<%= f.password_field :password , :value => @in, id: :myInput%>
+   <br><br> 
+<div class="check"><input type="checkbox" onclick="myFunction()"> Show Password 
+    <%= f.submit "save changes", data: { confirm: 'save changes?' },class: "btn-submit", class: "button1" %></div>
+    
+</div>
+
+  
+  
+
+<% end %>
+
+</div>
+
+</div>
+</div>
+
+
+<style type="text/css">
+    
+    @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+
+
+    select {
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FFF, #FFF 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   
+   overflow: hidden;
+   padding: 11px 19px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   margin-top: 40px;
+   margin-left: 30px;
+   width: 60%;
+}
+
+    
+
+/* CAUTION: IE hackery ahead */
+select::-ms-expand { 
+    display: none; /* remove default arrow on ie10 and ie11 */
+}
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width:0\0) {
+    select {
+        background:none\9;
+        padding: 5px\9;
+    } 
+}
+
+
+    .jira input[type=text],input[type=password]  {
+    width: 70%;
+    padding: 8px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+  
+  p{
+    width: 100%;
+  }
+
+  
+  .check{
+
+    margin-left: 70px;
+
+  }
+.danger {
+    background-color: #ffdddd;
+    border-left: 3px solid #f44336;
+}
+.add input[type=text] {
+
+  width: 60%;
+    padding: 12px 22px;
+    margin-left: 30px;    box-sizing: border-box;
+
+}
+
+.button {
+    background-color: #003366;
+    width: 268px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    margin-top: 35px;
+    margin-left: 30px;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button:hover {
+    
+    border-radius: 4px;
+    border: none;
+    color: white;
+    
+}
+
+
+
+.button1 {
+    background-color: #003366;
+     margin-left: 58px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 7px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button1:hover {
+     
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+
+
+
+  .user{
+
+    margin-top: 130px;
+    font-size: 12px;
+   font-family: 'Fira Sans', sans-serif;
+
+  }
+  .hsize
+{
+  font-size: 22px;
+
+}
+.inputsize
+{
+
+  font-size: 15px;
+   font-family: 'Fira Sans', sans-serif;
+
+}
+
+td a img{
+
+  width: 20px;
+  background-color: white;
+}
+
+td a{
+
+  text-decoration-color: none;
+}
+
+
+ul {
+    background: white;
+    padding: 25px;
+    margin: 5px;
+    font-size: 17px;
+    font-family: 'Fira Sans', sans-serif;
+    text-align: left;
+}
+
+.user .h1size b
+{
+  margin-left: 110px;
+  font-size: 22px;
+
+}
+.user .h2size b
+{
+  margin-left: 130px;
+  font-size: 22px;
+
+}
+
+li {
+    background: #3a5677;
+    margin: 5px;
+}
+
+#hom{
+
+  text-align: center;
+}
+</style>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myInput");
+    if (x.type === "text") {
+        x.type = "password";
+    } else {
+        x.type = "text";
+    }
+}
+</script>
+<script type="text/javascript">
+  
+  
+  $(document).ready(function(){
+
+  
+  
+function success (po)
+{
+  return '<div class="alert alert-success alert-dismissible" id ="hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span>' + '</button>' + '<strong>Success!!'+ '</strong>'+ '  ' + '<b>'+  po + '</b>' + ' was successfully added'+ '</div>';
+}
+  function warning(boo)
+  {
+    if (boo === "true")
+    {
+      return '<div class="alert alert-danger alert-dismissible" id= "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span></button>' + '<strong> Oh snap!</strong> Invalid Email! Email already Exist' +'</div>'
+    }
+    else
+    {
+      return '<div class="alert alert-danger alert-dismissible" id= "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span></button>' + '<strong> Oh snap!</strong> Invalid Email! use coupa account only' +'</div>'
+    }
+  }
+
+
+    function append(){
+
+    $("#userdata").val('');            
+
+              $("#userdata").on('keyup', function()
+              {
+                $("#hom").remove(); 
+              });
+
+  }
+
+    var changeHandler = function (e) {
+        if (this.value)
+            $("#usersadd").removeAttr("disabled");
+    };
+    $("#userdata").keyup(
+      changeHandler
+    ).change(
+      changeHandler
+    ).mousemove(
+      changeHandler
+    );
+
+
+
+  
+    $(".form2").on("submit", function(e) {
+    $.ajax({
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        type: "POST",
+        dataType: "json",
+        
+        success: function(response) 
+        {
+            user = document.getElementById("userdata").value; 
+            //$("p").html('<div class="isa_info">'+ '<i class="fa fa-info-circle"></i>' + 'Replace this text with your own text.' + '</div>' );
+            $('p').html(success(user)); 
+            append();
+        },
+        error: function(xhr, textStatus, errorThrown) 
+        {
+          var pl= document.getElementById("userdata").value;
+            if (/@coupa.com\s*$/.test(pl)) 
+            {
+                $.ajax({
+                  data: { email: pl},
+                  dataType: 'script',
+                  type: 'post',
+                  url: "/exist",
+                  success: function(data)
+                  {
+                    $('p').html(warning(data));
+                    append();
+                  }    
+                });
+            }
+            else  
+            {
+              $('p').html(warning(null));
+              append();  
+            }
+            
+            
+          }
+    });
+    e.preventDefault(); //THIS IS VERY IMPORTANT
+
+
+});
+
+
+  });
+
+  
+</script>

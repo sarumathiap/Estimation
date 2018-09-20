@@ -1,0 +1,260 @@
+
+<style type="text/css">
+  @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+
+html {
+   height: 100%;
+}
+
+body {
+/* Remember to use the other versions for IE 10 and older browsers! */
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100%;
+font-family: 'lato', sans-serif;
+color: #fff;
+background: #222222;
+background: #16222A; /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #003366 , #295370); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #003366 , #295370); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+  position: fixed;
+  background:#4c7999;
+  border-radius: 5px;
+  box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
+  width:450px;
+  height: 430px;
+  display: flex;  
+  flex-direction: column;
+}
+
+
+
+.login-item {
+  position: fixed;
+  color: #ffff;
+  padding:23px 23px 0;
+
+  width: 430px;
+
+  margin-top: 80px;
+
+  margin-left: 25px;
+    
+  border-radius: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+.text--center {
+  text-align: center;
+}
+
+.login-item a img{
+    
+    margin-left: 40px;
+    margin-top: 0px;
+    width: 250px;
+    
+}
+
+.login-item a img:hover{
+    
+   
+   
+    
+    
+}
+
+a:hover {
+
+    background-color:transparent;
+}
+
+
+.login-item h2 {
+
+  font-size: 16px;
+  margin-top: 50px;
+  margin-left: 50px;
+
+}
+
+p{
+  margin-top: 10px;
+}
+
+.close{
+  margin-bottom: 10px; 
+}
+
+
+</style>
+
+
+
+
+<p class="logout"></p>
+
+<div class="container">
+  <p></p>
+    <!-- <div class="logo">Login</div> -->
+    <div class="login-item">
+      
+        
+
+       <%= link_to image_tag("google2.png", border: 0), "/auth/google_oauth2", id: "sign_in" %>
+
+       <h2>Dont have Account? Get Access</h2>
+       <%= render 'form', user: @user %>
+      
+    </div>
+</div>
+
+<% if session[:act] == "sessions/destroy" %>
+<script type="text/javascript">
+function append(){
+
+    $("input[type=text]").val('');            
+
+              $("input[type=text]").on('keyup', function()
+              {
+
+                $("#hom").remove();
+                
+              });
+
+  }
+function logout()
+  {
+   
+      return '<div class="alert alert-success alert-dismissible" id = "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span>' + '</button>' + '<strong>Successfully!!'+ '</strong>'+ '  ' + '<b>'+ 'Logged out' + '</b>'+ '</div>';
+  }
+$('p').html(logout());
+append();
+</script>
+<% session[:act] = nil%>
+<% else %>
+<% session[:act] = nil %>
+<%end%>
+
+<% if session[:http] == "http://localhost:3000/auth/google_oauth2"%>
+<script type="text/javascript">
+function append(){
+
+    $("input[type=text]").val('');            
+
+              $("input[type=text]").on('keyup', function()
+              {
+
+                $("#hom").remove();
+                
+              });
+
+  }
+function warning()
+  {
+   
+      return '<div class="alert alert-danger alert-dismissible" id= "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span></button>' + '<strong> Authentication Failure !!</strong> Register using coupa email' +'</div>';
+  }
+$('p').html(warning());
+append();
+</script>
+<% session[:http] = nil%>
+<% else %>
+<% session[:http] = nil %>
+<%end%>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+  
+  function success (po)
+{
+  return '<div class="alert alert-success alert-dismissible" id = "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span>' + '</button>' + '<strong>Success!!'+ '</strong>'+ '  ' + '<b>'+  po + '</b>' + ' Notified to Admin'+ '</div>';
+}
+
+  var warning = '<div class="alert alert-danger alert-dismissible" id = "hom" role="alert">' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' + '<span aria-hidden="true">&times;</span></button>' + '<strong> Oh snap!</strong> Invalid Email!! Use coupa account!' +'</div>'
+
+
+
+  
+    function append(){
+
+    $("input[type=text]").val('');            
+
+              $("input[type=text]").on('keyup', function()
+              {
+
+                $("#hom").remove();
+                
+              });
+
+  }
+
+  var changeHandler = function (e) {
+    if (this.value)
+        $("input[type=submit]").removeAttr("disabled");
+};
+$("input[type=text]").keyup(
+    changeHandler
+).change(
+    changeHandler
+).mousemove(
+    changeHandler
+);
+
+  $(".form-signin").on("submit", function(e) {
+    $.ajax({
+        url: $(this).attr('action'),
+        data: $(this).serialize(),
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+          
+            
+             user = document.getElementById("user_email").value 
+      //$("p").html('<div class="isa_info">'+ '<i class="fa fa-info-circle"></i>' + 'Replace this text with your own text.' + '</div>' );
+      
+            $('p').append(success(user));
+            append();
+
+
+                
+
+            
+
+        },
+        error: function(xhr, textStatus, errorThrown) {
+
+
+          $("p").append(warning);
+
+          append();
+
+        }
+              
+    });
+    e.preventDefault(); //THIS IS VERY IMPORTANT
+
+
+});
+
+});
+
+
+  
+</script>

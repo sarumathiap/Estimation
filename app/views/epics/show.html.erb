@@ -1,0 +1,246 @@
+
+
+ <body>
+ <style>
+ .dataTables_length{
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  .dataTables_filter input{
+   margin-top: 10px;
+    border-radius: 30px;
+    outline: none;
+    text-indent: 10px;
+    margin-right: 30px;
+      }
+      table.display{
+        width: 1300px;
+         /*border: 4px #a3a3a3;
+
+         border-style: solid;
+         border-radius: 30px;
+         border-bottom: 4px;*/
+
+
+         
+      }
+
+      table.display a{
+        color: #003366;
+         
+      }
+      .dataTables_info{
+        margin-left: 20px;
+      }
+
+
+ </style>
+ 
+<div class="row" style="background-color: #f9f9f9;"">
+  <div class="col-sm-6" style="border-left: 5px solid red;">
+
+  <h5 style= "font-size: 40px;font-family: palatino; margin-top:85px;margin-left:10px;  color: #003366;""><%= @rel_name %>-<%= @moduleid.name%></h5>
+
+  <h1 style= "font-size: 18px; margin-top:15px; margin-left:10px;color: #003366;""><strong> Epic Key: </strong> <%= @story.key %></h1>
+
+  <h1 style= "font-size: 18px; margin-top:15px; margin-left:10px; color: #003366;""><strong>Epic Name: </strong><%= @story.name %></h1>
+
+   
+
+  </div>
+
+  <div class="col-sm-5">
+<div id="container" style="width: 600px; height: 300px; margin: 0 auto"></div>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
+<script>
+
+        
+        console.log("typ"+ ("<%= @final_rem_graph %>"));
+        $(function () {
+
+
+          function nit(times){
+          console.log("typeeeeeeeeee"+ typeof(times));
+           var h = times.split(".")[0];
+         var m=times.split(".")[1];
+         if(m.length == 1)
+         {
+            var t = h +"."+"0" + m;
+            return t;
+         }
+         else
+         {
+            var t= h+"."+m;
+            return t;
+         }
+        };
+       
+        console.log(<%= @final_esti_graph%>);
+         var esti = nit("<%= @final_esti_graph%>")
+         var act = nit("<%= @final_act_graph%>")
+         var rem = nit("<%= @final_rem_graph %>")
+        
+          if (<%= @final_esti_graph %> >  <%= @final_act_graph %>)
+          {
+              var obj = "#93bc71"
+          }
+          else
+          {
+              var obj = "#d87763"
+          }
+        $('#container').highcharts({
+                         credits: {
+    enabled: false
+  },
+            chart: {
+                type: 'bar',
+               
+
+ backgroundColor:'rgba(255, 255, 255, 0.0)'
+            },
+             title:{
+                  text:"Cumulative Estimation of <%= @story.key %>"
+                },
+            xAxis: {
+                gridLineColor: 'rgba(255, 255, 255, 0.0)',
+                categories: ['Total Estimation time', 'Total Logged Time', 'Total Variance'],
+                 labels: {
+         style: {
+          fontSize: '13px',
+          fontWeight: 'bold',
+            color: '#000000',
+           }
+           }
+            },
+            yAxis:{
+                     
+         gridLineColor: 'rgba(255, 255, 255, 0.0)',
+     
+      labels: {
+         style: {
+          fontWeight: 'bold',
+            color: '#000000',
+           }
+      },
+      title:{
+                            text:'Hours',
+
+                            style:{
+                              color: "#000000",
+                              fontWeight: 'bold',
+                                fontSize: '13px',
+                             }
+                        }
+
+    },
+      legend:
+      {
+                         enabled: false
+
+                    
+      },
+      tooltip:{
+                       enabled: false
+                    },
+         
+            plotOptions: {
+                bar: {
+           
+                dataLabels: {
+                    enabled: true
+                }
+            },  
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        color: '#1e1d1d',
+                     style: {
+                  
+                     textOutline: false 
+                },
+                
+                       formatter:function () {
+
+                        console.log("lasldsld"+typeof(this.y[1]));
+                          var ko = String(this.y);
+                          var m = ko.split(".")[1];
+                          console.log("oiksnsg"+m);
+                          let a = this.y.toFixed(2).toString();
+                          //console.log(typeof(a));
+                        var b  = a.split(".");
+                        console.log(a);
+                             if(b[1]=="00"){
+                            return '' +
+                                     b[0]+ ' hrs '}
+                                     else if(b[1].length == 1) {
+                                      b[1] = "0"+b[1]
+                            return '' +
+                                     b[0]+ ' hrs ' + b[1]+ ' mins';    
+                                     }
+                                     else{      
+                            return '' +
+                                     b[0]+ ' hrs ' + b[1]+ ' mins';
+} 
+
+                        },
+                       
+                       
+                        inside: true,
+                                            },
+                    pointPadding: 0.26,
+                    groupPadding: 0
+                }
+            },
+            
+
+            series: [{
+                data: [
+                {y: parseFloat(esti), dataLabels: {
+                enabled: true} ,
+                  color: "#1bc6c4"},
+                {y: parseFloat(act), dataLabels: {
+                enabled: true} , color: "#82b1cc"}, {y: parseFloat(rem), dataLabels: {
+                enabled: true} , color: obj}]
+              }]
+        });
+    });
+$('#preview').html(chart.getCSV());
+    </script>
+</div>
+</div>
+
+ <table id ="epics" class="display" data-source="<%= epics_url(format:"json") %>" style="width: 100%" >
+ <thead>
+ <tr>
+ <th>Story Key</th>
+ <th>Story name</th>
+ <th>Assignee</th>
+ <th>Estimated Time</th>
+ <th>Logged Time</th>
+ <th>Variance</th>
+ <th>Status</th>
+ </tr>
+ </thead>
+ <tbody>
+ <% @story.stories.each do |issue| %>
+ <tr>
+ <td><%= link_to issue.key,issue, :"data-turbolinks" => false %></td>
+ <td><%= issue.name %></td>
+ <td><%= issue.QE_assignee.split(".").join(" ") %></td>
+ <td><%= ModulsHelper.hours_mins(issue.sub_task_story_estimated_time) %></td>
+ <td><%= ModulsHelper.hours_mins(issue.sub_task_story_logged_time) %></td>
+ <td><%= ModulsHelper.hours_mins(issue.sub_task_story_remaining_time) %>
+   <span><%if indicator(issue.sub_task_story_estimated_time, issue.sub_task_story_logged_time) == 0 %>
+
+    <%= image_tag("redarrow.png", :size => "25x25")%>
+    <% end %>
+  </span>
+
+ </td>
+ <td><%= issue.status %></td>
+ <% end %>
+ </tbody>
+ </table>
+</body>
+

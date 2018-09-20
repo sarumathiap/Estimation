@@ -1,0 +1,48 @@
+
+<%if Sidekiqjob.last.nil? %>
+	
+	<% begin %>
+		<% a =  Sidekiqjob.last.end_progress %>
+	<% rescue %>
+		<% a = "nil"%>
+	<% end %>
+<% else %>	
+	
+	<% a= Sidekiqjob.last.end_progress %>
+
+<% end %>
+
+disabledbut()
+function disabledbut()
+{
+	if ("<%=a%>" == "completed")
+	{
+		document.getElementsByTagName("input")[4].disabled = true;
+		document.getElementsByTagName("input")[4].value = "db updating please wait .... "
+		
+
+		var a =document.getElementById("update");
+		 a.innerHTML = ""
+		var img = document.createElement("img");
+		img.setAttribute('id', "up")
+	img.src = "<%= asset_path('12.gif') %>";
+	var src = document.getElementById("loader");
+	src.appendChild(img);
+
+	<% Dbupdater.perform_async(current_user.name) %>
+		
+	}
+	else
+	{
+		alert("your job is in queue")
+		console.log("not completed")
+		document.getElementsByTagName("input")[4].disabled = true;
+		document.getElementsByTagName("input")[4].value = "db updating please wait .... "
+		
+	}
+}
+
+
+
+
+

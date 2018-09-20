@@ -1,0 +1,46 @@
+<div class="split left">
+  <div class="centered">
+<% if @use.empty? %>
+<p>No pending approvals</p>
+<%else%>
+        <table cellpadding="20" align="center">
+
+         <tr >
+        <th>User List</th>
+        <th>Accept</th>
+        <th>Reject</th>
+</tr>
+ <% @use.each do |user| %>
+
+
+        <tr>
+         <td><%= user.email %></td>
+        
+         
+        <td><%= button_to "Approve",  confirm_info_path(user), :method => :put %></td>
+
+        <td><%= button_to 'Reject', user, method: :delete, data: { confirm: 'Are you sure?' },class: "btn-submit" %></td>
+ </tr>
+   <% end %>
+  
+
+<% end %>
+</table>
+</div>
+</div>
+
+<div class="split right"> 
+  <div class="centered">
+<% @infos.each do |info| %>
+
+
+Userid					: 	<%= info.email %><br/><br/>
+
+
+
+
+
+<% end %>
+
+
+<%= link_to "Add Users" , new_info_path %></div></div>

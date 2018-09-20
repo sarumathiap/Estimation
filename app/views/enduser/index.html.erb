@@ -1,0 +1,45 @@
+
+<% if @use.empty? %>
+<p>No pending approvals</p>
+<%else%>
+ <% @use.each do |user| %>
+
+        <table cellpadding="20" align="center">
+
+         <tr >
+         <th style="text-align: left;">Name</th>
+         <td><%= user.role %></td>
+         </tr>
+         <tr>
+         <th style="text-align: left;">Role</th>
+         <td><%= user.email %></td>
+        </tr>
+        <tr>
+        <th style="text-align: left;">Status</th>
+        <td><%= user.status %></td>
+        </tr>
+        <td><%= button_to "Confirm",  confirm_authuser_path(user), :method => :put %></td>
+
+        <td><%= button_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' },class: "btn-submit" %></td>
+
+   <% end %>
+  
+
+<% end %>
+
+
+
+Added Users
+<% @users.each do |info| %>
+
+Role          :   <%= info.role %><br/><br/>
+Userid          :   <%= info.email %><br/><br/>
+Status          :   <%= info.status %><br/><br/>
+
+
+*****************************************************<br/><br/>
+
+<% end %>
+
+
+<%= link_to "Add Users" , new_info_path %>

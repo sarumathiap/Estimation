@@ -1,0 +1,2 @@
+class Hardcode < ApplicationRecord
+end

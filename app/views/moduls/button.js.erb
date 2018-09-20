@@ -1,0 +1,48 @@
+// function submitdis(){
+	
+//       //document.getElementsByTagName("input")[0].disabled = true;
+//       setTimeout(function(){
+      	
+//       	document.getElementsByTagName("input")[0].disabled = false;
+//       	document.getElementsByTagName("input")[0].value = "Update Now"
+//       }
+//       ,5000);
+//   }
+
+// <%if Sidekiqjob.last.nil? %>
+	
+// 	<% begin %>
+// 		<% a =  Sidekiqjob.last.end_progress %>
+// 	<% rescue %>
+// 		<% a = "nil"%>
+// 	<% end %>
+// <% else %>	
+	
+// 	<% a= Sidekiqjob.last.end_progress %>
+
+// <% end %>
+
+// disabledbut()
+// function disabledbut()
+// {
+// 	if ("<%=a%>" == "completed")
+// 	{
+// 		document.getElementsByTagName("input")[0].disabled = true;
+// 		document.getElementsByTagName("input")[0].value = "db updating please wait .... "
+// 		<% Dbupdater.perform_async %>
+// 		//submitdis()
+		
+// 	}
+// 	else
+// 	{
+// 		alert("your job is in queue")
+// 		console.log("not completed")
+// 		document.getElementsByTagName("input")[0].disabled = true;
+// 		document.getElementsByTagName("input")[0].value = "db updating please wait .... "
+// 	}
+// }
+
+
+
+
+

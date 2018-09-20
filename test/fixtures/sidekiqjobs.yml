@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jobid: MyString
+  start_progess: MyString
+  end_progress: MyString
+
+two:
+  jobid: MyString
+  start_progess: MyString
+  end_progress: MyString

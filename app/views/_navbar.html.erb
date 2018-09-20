@@ -1,0 +1,178 @@
+
+
+<%#if current_user.role == "admin" %>
+<nav class="navbar" style="background-color: #003366;" >
+
+  <form class="form-inline">
+    
+    <%if current_page?(root_url)%>
+     <%= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;&ensp;
+        <form class="form-in">
+        <div id = "timeup" style="color: white;"> <%#=ModulsHelper.ad%> &ensp; </div> 
+    </form>
+     <% elsif current_page?('/users/new') %>
+     <% nil%> 
+     <% elsif current_page?(moduls_url)%>
+     <%= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;&ensp;
+     <form class="form-in">
+        <div id = "timeup" style="color: white;"> <%#=ModulsHelper.ad%> &ensp; </div> 
+    </form>
+         
+    <% else%>
+
+    <%= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;
+    <%= link_to image_tag("bac11.png", :size => "27x27"),  'javascript:history.back()',:"data-turbolinks" => false%>&ensp;
+    <form class="form-in">
+      
+        <div id = "timeup" style="color: white;"><%#=ModulsHelper.ad%> &ensp; </div> 
+    </form>
+         
+    <%end%>
+    </form>
+   
+
+    <script type="text/javascript">
+    
+    function refresh1() 
+                { 
+                  
+                 $.ajax({
+                        type: "GET",
+                        url: "/butt" ,
+                        success: function(data){}
+                        });
+                  setTimeout(refresh1, 250);
+                }
+    setTimeout(refresh1, 500);
+</script>
+
+    
+        
+
+      
+       
+
+    
+  <form class="form-inline">
+
+
+     <%if current_page?('/users/new') %>
+     <% nil%> 
+    <% else%>
+    <div class="role">
+        <% if current_user != nil %>
+         <% if current_user.role == "superuser" %>
+            <%= link_to "Super User" , new_timechange_path,:"data-turbolinks" => false  %>
+        <% elsif current_user.role == "admin"%>
+            <%= link_to "Admin" , new_info_path,:"data-turbolinks" => false  %>
+        <%else%>
+            <%= nil%>
+        <%end%> 
+        <%end%> 
+      </div>
+    <strong><%= link_to image_tag("log11.png", :size => "30x30"), signout_path, id: "sign_out",:"data-turbolinks" => false %></strong>
+ 
+
+    <%end%>
+  </form>
+
+</nav>
+
+
+
+<style type="text/css">
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px|Source+Sans+Pro:600');
+    
+    .role {
+
+        margin-right: 20px;
+
+    }
+
+    .role a {
+        border-radius: 5px;
+        background-color: white; /* Green */
+    border: none;
+    color: #003366;
+    padding: 0.2rem 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+
+    }
+    .role a:hover {
+        border-radius: 5px;
+        background-color: #003366; /* Green */
+    border: none;
+    color: white;
+    padding: 0.2rem 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+    }
+
+    .form-in {
+
+        margin-right: 600px;
+
+    }
+
+
+
+</style>
+
+<%#elsif current_user.role == "superuser"%>
+    
+<!--     <nav class="navbar" style="background-color: #003366;" >
+
+  <form class="form-inline">
+    
+    <%#if current_page?(root_url)%>
+     <%#= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;
+     <%# elsif current_page?('/users/new') %>
+     <%# nil%> 
+     <%# elsif current_page?(moduls_url)%>
+     <%#= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;
+    <%# else%>
+    <%#= link_to image_tag("hom11.png", :size => "30x30"), moduls_url,:"data-turbolinks" => false %>&ensp;
+    <%#= link_to image_tag("bac11.png", :size => "27x27"),  'javascript:history.back()',:"data-turbolinks" => false%>
+ 
+
+    <%#end%>
+
+
+    
+    </form> -->
+
+    <!-- <form class="form-inline">
+        
+
+        <%#= link_to "Super Admin" , new_info_path %>
+       
+
+    </form> -->
+  <!-- <form class="form-inline"> -->
+
+
+     <%# if current_page?('/users/new') %>
+     <%# nil%> 
+    <%# else%>
+    <!-- <div id = "timeup" style="color: white;"> <%#= ModulsHelper.ad %> &ensp; </div>    -->
+    <!-- <strong><%#= link_to image_tag("log11.png", :size => "30x30"), signout_path, id: "sign_out"%></strong> -->
+ 
+
+    <%#end%>
+  <!-- </form> -->
+
+
+<%#else%>
+
+
+<%#end%>
+

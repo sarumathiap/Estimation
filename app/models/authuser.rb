@@ -1,0 +1,2 @@
+class Authuser < ApplicationRecord
+end

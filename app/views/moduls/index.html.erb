@@ -1,0 +1,109 @@
+
+<div id="abc"></div>
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#Release_release_id').bind('load change',  function(){
+
+      var a = $("#Release_release_id option:selected").text();
+      $('#list').text('');
+
+
+
+     $.ajax({
+                  data: { release: a },
+                  type: 'post',
+                  url: "/selectdata",
+                  success: function(data)
+                  {
+
+          $('.list-count').text(data.length + ' items');
+                    
+                    
+                    for( i=0;i<=data.length-1;i++)
+                    {
+            $('#list').append("<a data-turbolinks='false' href= '/moduls/"+data[i][0]+"'>" + "<li class='in' id='l'><b>"+data[i][1]+"</b></li></a>");
+          }
+
+                  } , 
+                   error: function(xhr, textStatus, errorThrown) 
+              {
+                console.log(xhr)
+              }  
+                });
+
+    });
+    $('#Release_release_id').trigger('change');
+    
+
+
+  });
+</script>
+
+<div class="vis">
+    
+   <section class="list-wrap">
+
+
+<div class="styled-select slate">
+  <%= select("Release", "release_id", Release.all.collect {|p| [ p.name, p.id ] })  %>
+  </div>
+  <input type="text" id="search-text" placeholder="search" class="search-box"; 
+    style= "border-radius: 30px;  "> 
+      <span class="list-count"></span>
+      <ul id="list" >
+
+      <span class="empty-item">no results</span> 
+  </ul>
+
+     </section>
+
+
+     </div>
+
+
+     <style >
+  .search-box:focus{
+     outline: none;
+  }.styled-select select {
+   background: transparent;
+   outline: none;
+   border: none;
+   cursor: pointer;
+   font-size: 14px;
+   height: 13px;
+   padding: 5px; / If you add too much padding here, the options won't show in IE /
+   width: 26px;
+   border-radius: 30px;
+}
+/*
+.styled-select.slate {
+   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+   height: 3px;
+   width: 80px;
+position: absolute;
+}
+*/
+.styled-select.slate select {
+   border: 2px solid #ccc;
+   font-size: 16px;
+   height: 40px;
+   width: 80px;
+   background-color: #003366;
+   color: white;
+border-radius: 30px;
+border-top-color: grey;
+
+border-left-color: grey;
+position: absolute;
+opacity: 0.9;
+  
+}
+  
+
+
+</style>
+
+
+
+

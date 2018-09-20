@@ -1,0 +1,30 @@
+var op = "<%= ModulsHelper.ad %>"
+
+	<% begin %>
+		<% a =  Sidekiqjob.last.end_progress %>
+	<% rescue %>
+		<% a = "nil"%>
+	<% end %>
+
+<% if a == "completed" %>
+document.getElementsByTagName("input")[4].disabled = false;
+document.getElementsByTagName("input")[4].value = "Update Now"
+document.getElementById("update").innerHTML = op
+
+console.log(document.getElementById("up"))
+ if (document.getElementById("up") === null)
+    {
+
+    }
+    else
+    {
+      var image_x = document.getElementById('up');
+      image_x.parentNode.removeChild(image_x);
+    }
+
+<%  else %>
+document.getElementsByTagName("input")[4].disabled = true;
+
+
+
+<% end %>

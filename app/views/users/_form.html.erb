@@ -1,0 +1,68 @@
+<%= form_with(model: user, local: true, :class => "form-signin") do |form| %>
+  
+
+  
+    <%= form.text_field :email, id: :user_email, :placeholder => "Enter your Email" %>
+  
+
+  
+    <%#= form.hidden_field :status ,:value => "0" ,:readonly => true  %>
+  
+
+  
+    <%#= form.hidden_field :role ,:value => "user" ,:readonly => true %>
+  
+
+  <div class="actions">
+    <%= form.submit "Get Access", :class => 'button button1' %>
+  </div>
+<% end %>
+
+<style> 
+input[type=text] {
+    margin-top: 20px;
+    width: 320px;
+    padding: 10px 18px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 2px solid #133d82;
+}
+
+.button {
+
+    margin-top: 20px;
+    margin-left: 80px;
+    background-color: #295370; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    width: 160px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+.button1 {
+    background-color: #295370; 
+    color: white; 
+    
+}
+
+.button1:hover {
+    background-color: white;
+    color: #002e77;
+
+</style>
